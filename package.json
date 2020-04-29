@@ -1,0 +1,23 @@
+{
+  "name": "notes",
+  "version": "1.0.0",
+  "description": "笔记仓库",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imtaotao/notes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imtaotao/notes/issues"
+  },
+  "homepage": "https://github.com/imtaotao/notes#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
