@@ -80,7 +80,7 @@
 
   ```js
   function encode(html) {
-    return html.replace(/[<>&"]/g, v => (
+    return html.replace(/[<>&"']/g, v => (
       {
         '<':'&lt;',
         '>':'&gt;',
@@ -157,8 +157,14 @@
 ### http 劫持
 + 使用 https
 
-## SQL 注入
+### SQL 注入
 + 对查询语句中字符做正确的转译
 + 最小化数据库账户使用权限
 + 不开发不必要但权力过大的功能（比如查用户的信息，扩大到查询所有用户的信息）
 + 不要过于信任用户所输入的数据，限制输入的字符数，以及对用户输入的数据做潜在指令的检查
+
+### 一些 xss 的小游戏网站
++ [美团关于 xss 的文字](https://tech.meituan.com/2018/09/27/fe-security.html)
++ [`alert(1) to win`](https://alf.nu/alert1)
++ [`prompt(1) to win`](http://prompt.ml/0)
++ [`XSS game`](https://xss-game.appspot.com/)
