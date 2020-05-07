@@ -1,0 +1,113 @@
+                                  第二章（分支）
+http://git.oschina.net/progit/3-Git-%E5%88%86%E6%94%AF.html
+
+ // 、、、、、、、、、、、、、、、、、 基本操作（本地分支） 、、、、、、、、、、、、、、、、、、 //
+1. 新建分支
+   git branch branch-name
+   a> 这会在当前 commit 对象上新建一个分支指针
+   b> git 保存这个一个名为 HEAD 的特别指针，在 git 中，它是一个指向你正在工作中的本地分支指针
+
+2. 切换分支 (提交层面，区别文件层面)
+   git checkout branch-name
+   a> HEAD 在你转换分支时指向新的分支
+   b> 切换分支的时候最好保存一个清洁的工作区域，留心暂存区域和工作目录里面没有提交的修改
+
+3. 新建并切换到该分支
+   git checkout -b branch-name
+
+
+4. 删除分支
+   git branch -d branch-name
+   a> 如果分支上有尚未合并的工作成果，删除会报错，用大写的 -D 可以强制删除
+   example
+   git branch -D branch-name
+
+5. 分支改名
+   git branch -m branch-name
+
+6. 合并分支
+   git merge branch-name
+   a> 当前分支和指定的分支进行合并
+
+7. 遇到冲突时的分支合并
+   a> 如果出现了 CONFILCT，git 会做合并，但是不会提交，等开发者手动解决冲突
+   b> 可以用 git status 查看是否解决了冲突
+   c> 如果觉得冲突解决了，可以 git commit 提交合并
+
+8. 拉取一个干净的远程分支
+   git fetch --all
+   git reset --hard origin/branch-name
+
+// 、、、、、、、、、、、、、、、、、分支的管理 、、、、、、、、、、、、、、、、、、 //
+1. 查看分支
+   a> 列出所有分支
+   git branch
+
+   b> 查看各个分支的最后一个提交对象信息
+   git branch -v
+
+   c> 筛选已经（或尚未）与当前分支合并的分支（git 1.5.6版本以上）
+   git branch --merged
+   git branch --no-merged
+
+2. 查看分支（补充）
+   a> 查看远程分支
+   git branch -r
+
+   b> 查看所有分支
+
+   git branch -a
+
+   c> 查看本地分支与远程分支的追踪关系
+   git branch -vv
+
+
+// 、、、、、、、、、、、、、、、、、利用分支进行开发的工作流程 、、、、、、、、、、、、、、、、、、 //
+看文档
+ a> http://git.oschina.net/progit/3-Git-%E5%88%86%E6%94%AF.html#3.4-%E5%88%A9%E7%94%A8%E5%88%86%E6%94%AF%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B
+
+
+// 、、、、、、、、、、、、、、、、、远程分支 、、、、、、、、、、、、、、、、、、 //
+1.
+ a> 一次 git 克隆会建立你自己的本地分支 master 和 远程分支 origin/master,
+    并且将他们都指向 origin 上的 master 分支
+
+ b> 如果你在本地 master 分支做了改动，与此同时，其他人向服务器推送了他们的更新，那么服务器
+    上的 master 就会向前推进，而你本地的提交历史朝着不同的方向发展，只要不和服务器通讯，你
+    的 origin/master 指针仍然保持原位不会移动（此时的 origin/master 指针指向远程服务器）
+
+ c> git fetch remote-name
+    用来获取服务器上你还没有的数据，
+    git merge branch-name
+    用来合并你的分支数据，因为用 fetch 拉下来服务器的代码，相当于本地合并拉下的分支，本地分支优先级高一些
+    fetch 的时候回把 origin/master 指针指向服务器最新的位置上，还会更新 remote 索引
+
+ d> fetch 之后的分支合并（补充 c）
+    如果要把远程分支的内容合并到当前分支，可以运行
+     git merge origin/branch-name
+    如果想要一份自己的 branch-name 来开发，可以在远程分支的基础上分化一个新的分支来
+     git checkout -b branch-name origin/远程branch-name
+    注释：
+     还可以通过
+      git checkout -b branch-name
+      git fetch origin
+      git reset --hard origin/远程branch-name
+      或者
+      git fetch origin master:自己要新建的分支
+
+  e> 跟踪远程分支
+     在 d 选项中的 git checkout -b branch-name origin/远程branch-name 就会自动跟踪
+     在 1.6.2 版本的 git 上，可以用 --track 做简化
+     git checkout --track origin/远程branch-name
+
+  f> 删除远程分支
+     git push origin :远程branch-name
+     相当于推送了一个空白，然后把他变成远程分支，在第一章里面有讲
+
+  g> 后续设置本地分支与远程分支的跟踪
+     git branch --set-upstream-to=remote-name/branch-name
+
+// 、、、、、、、、、、、、、、、、、分支的衍合 、、、、、、、、、、、、、、、、、、 //
+1. git fetch remote-name
+
+2. git rebase master-name
