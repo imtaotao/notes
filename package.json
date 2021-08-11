@@ -11,8 +11,8 @@
     "type": "git",
     "url": "git+https://github.com/imtaotao/notes.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "imtaotao",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/imtaotao/notes/issues"
   },
