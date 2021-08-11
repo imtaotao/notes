@@ -1,12 +1,14 @@
 # 笔记和思考
 `code` 中放的是一些代码片段，`docs` 是一些笔记和文档（现在慢慢抽空迁移以前的）
 
-## 博客 - ppt
+## 博客
 
 - [github](https://github.com/imtaotao)
 - [github 博客](https://github.com/imtaotao/Blogs/issues)
 - [知乎](https://www.zhihu.com/people/chen-tao-2-78)
-- [es5.1 中文版](https://imtaotao.github.io/es5.1-document/)
+
+## ppt
+
 - [garfish ppt](https://docs.google.com/presentation/d/1XDoM1zgPEwnE5SpyBsmEz2OoMpBHaVneRjZyxU4PZ2E/edit)
 - [co 与异步演进 ppt](https://imtaotao.github.io/co-share/)
 
