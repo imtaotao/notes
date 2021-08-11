@@ -14,7 +14,7 @@
 
 ## 轮子
 
-时间从现在往后算，这些轮子有一少部分未写完
+时间从现在往后算，其实可以看到随着时间推移，代码质量和设计是越来越成熟的（第一年有大量的小 demo 未在 github 上）
 
 - [garfish](https://github.com/bytedance/garfish) : 字节跳动的微前端框架
 - [sakura](https://github.com/imtaotao/sakura) : 全新的一种组件开发方式（未完成）
@@ -32,3 +32,4 @@
 - [promise 实现](https://github.com/imtaotao/promise) : promise 的实现，让我对 js 的异步历史发展以及实现，event loop 有了深入的了解
 - [input-range](https://github.com/imtaotao/input-range) : 滑动库，用于高度自定义样式，在编程猫时已经实战过
 - [matrix](https://github.com/imtaotao/matrix) : css 矩阵变化库，与 css 矩阵变换行为一致
+- [swop](https://github.com/imtaotao/Swop) : 用来与 native 端交换收敛数据的库
