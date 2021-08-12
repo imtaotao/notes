@@ -1,3 +1,6 @@
+let i = 0
 setInterval(() => {
-  console.log(`I'm child \nprocess output.`.repeat(20));
+  console.clear()
+  console.log(i++)
+  console.log(`I'm child \nprocess output.`.repeat(20))
 }, 1000)
