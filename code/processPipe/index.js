@@ -15,6 +15,7 @@ const concatTittle = (data) => {
   }, '')
 }
 
+// 这种情况建议使用 transform 流，这样不用自己实现 pipe
 child.stdout.on('data', data => {
   if(!process.stdout.write(concatTittle(data))) {
     child.stdout.pause();
