@@ -292,5 +292,5 @@ echo ${A[@]} # 查看效果
   `||`
 
 ## 各种链接资料
-[知乎上的帖子1](https://www.zhihu.com/search?type=content&q=shell%20%E8%84%9A%E6%9C%AC)
-[知乎上的帖子2](https://zhuanlan.zhihu.com/p/123989641)
+- [知乎上的帖子1](https://www.zhihu.com/search?type=content&q=shell%20%E8%84%9A%E6%9C%AC)
+- [知乎上的帖子2](https://zhuanlan.zhihu.com/p/123989641)
