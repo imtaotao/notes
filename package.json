@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/imtaotao/notes#readme",
   "dependencies": {
+    "execa": "^5.1.1",
     "express": "^4.17.1"
   }
 }
