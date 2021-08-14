@@ -21,6 +21,7 @@ http.createServer((req, res) => {
     req.on('end', () => {
       console.log(req.headers);
       const data = Buffer.concat(body)
+      console.log(data.toString());
       fs.writeFileSync(filepath, data)
     })
   };
