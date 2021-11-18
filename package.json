@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/imtaotao/notes#readme",
   "dependencies": {
+    "compressing": "^1.5.1",
     "execa": "^5.1.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "glob-to-regexp": "^0.4.1"
   }
 }
