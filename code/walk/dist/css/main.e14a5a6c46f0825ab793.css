@@ -1,0 +1,48 @@
+.date-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 1.2rem;
+  line-height: 1.2rem;
+}
+.date-box .day-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 0.26667rem;
+  line-height: 0.32rem;
+}
+.date-box .day-box div:first-of-type {
+  margin-bottom: 0.08rem;
+}
+.date-box .split {
+  margin: 0 0.10667rem;
+  font-size: 0.69333rem;
+}
+.date-box .num-year {
+  position: relative;
+  top: -1px;
+  font-family: 'DINPro-Bold', sans-serif;
+  font-size: 0.69333rem;
+}
+.date-box .num-month,
+.date-box .num-day {
+  font-family: 'DINPro-Bold', sans-serif;
+  font-size: 0.29333rem;
+}
+
