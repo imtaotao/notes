@@ -5,6 +5,6 @@ const init = require('./utils.js');
 // `@@` 开头的是系统（全局和会话变量）变量，会话变量是当前连接中对全局变量的一份 copy
 init(async (exec, connection) => {
   await exec('use world;');
-  const res = await exec('show tables;');
+  const res = await exec('select char_length("chentao")');
   console.log(res);
 })

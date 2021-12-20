@@ -1,0 +1,1 @@
+- 删除表中的所有记录 `truncate table table_name;`， truncate 将直接删除原来的表，并创建一个新的表，所以比 delete 快。
