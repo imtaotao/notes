@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>indexDB</title>
+</head>
+<body>
+<script src="./index.js"></script>
+<script>
+  // -------- test ---------
+  const storeName = 'fileData';
+  openDB('test', {
+    [storeName]: { keyPath: 'hash' },
+  })
+  .then(async (db) => {
+    window.db = db;
+    
+    console.time('get');
+    const data = await read(db, storeName, 'tao5');
+    console.timeEnd('get');
+    if (!data) {
+      const code = 'tao'.repeat(100 / 3)
+      await add(db, storeName, {
+        hash: 'tao5',
+        data: { a: 1, b: 2, code }
+      })
+    }
+    console.log(data.data.code);
+  })
+</script>
+</body>
+</html>

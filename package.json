@@ -1,0 +1,41 @@
+{
+  "name": "notes",
+  "version": "1.0.0",
+  "description": "笔记仓库",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imtaotao/notes.git"
+  },
+  "author": "imtaotao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/imtaotao/notes/issues"
+  },
+  "homepage": "https://github.com/imtaotao/notes#readme",
+  "dependencies": {
+    "@npmcli/arborist": "^5.0.5",
+    "@npmcli/config": "^4.0.2",
+    "@rustle/html-parse": "^0.0.8",
+    "@types/react": "^17.0.43",
+    "compressing": "^1.5.1",
+    "execa": "^5.1.1",
+    "express": "^4.17.1",
+    "fs-extra": "^10.1.0",
+    "glob-to-regexp": "^0.4.1",
+    "libnpm": "^3.0.1",
+    "libnpmfund": "^3.0.1",
+    "libnpmpack": "^4.0.3",
+    "libnpmsearch": "^5.0.2",
+    "mysql2": "^2.3.3",
+    "npm": "^8.6.0",
+    "npm-package-arg": "^9.0.2",
+    "pacote": "^13.1.1",
+    "semver": "^7.3.5",
+    "walk": "^2.3.15"
+  }
+}

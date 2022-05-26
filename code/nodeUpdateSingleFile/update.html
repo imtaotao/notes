@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<input type="file" id="fileInput">
+<script>
+fileInput.onchange = e => {
+  const file = fileInput.files[0]
+  const data = new Blob([file], { type: 'image/jpeg' })
+
+  fetch('http://localhost:3000/', {
+    headers: {
+      'content-type': 'image/jpeg',
+    },
+    body: data,
+    method: 'post',
+  })
+}
+</script>
+</body>
+</html>
