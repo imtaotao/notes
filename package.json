@@ -33,6 +33,7 @@
     "libnpmsearch": "^5.0.2",
     "mysql2": "^2.3.3",
     "npm": "^8.6.0",
+    "node-fetch": "^2.6.6",
     "npm-package-arg": "^9.0.2",
     "pacote": "^13.1.1",
     "semver": "^7.3.5",
