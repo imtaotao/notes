@@ -20,11 +20,24 @@ use test;
 -- 视图
 
 -- 创建基本表
-create table t(
-  quantity int,
-  price int
+-- create table t(
+--   quantity int,
+--   price int
+-- );
+
+-- insert into t values(3, 50);
+
+-- create view view_t as select quantity, price, quantity * price as ab from t;
+
+-- apps 表
+create table apps (
+  `id` int not null default 100000 primary key auto_increment,
+  `appname` varchar(50) not null,
+  `principal` varchar(50) not null,
+  `description` varchar(255) not null
 );
 
-insert into t values(3, 50);
+-- 有权限的人
+create table user (
 
-create view view_t as select quantity, price, quantity * price as ab from t;
+)

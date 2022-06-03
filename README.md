@@ -16,6 +16,9 @@
 
 时间从现在往后算，其实可以看到随着时间推移，代码质量和设计是越来越成熟的（第一年有大量的小 demo 未在 github 上）
 
+- [fetch-npm-package](https://github.com/imtaotao/fetch-npm-package): 在浏览器中下载并解压 npm 包
+- [node-package-exports](https://github.com/imtaotao/node-package-exports) : nodejs 新的导出规范实现
+- [super-fast-md5](https://github.com/imtaotao/super-fast-md5) : 超快的 md5 实现
 - [garfish](https://github.com/bytedance/garfish) : 字节跳动的微前端框架
 - [sakura](https://github.com/imtaotao/sakura) : 全新的一种组件开发方式（未完成）
 - [hearken-next](https://github.com/imtaotao/hearken-next) : hearken 最新版（未完成）
