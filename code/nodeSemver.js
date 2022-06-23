@@ -35,3 +35,5 @@ console.log(semver.intersects('17.0.2', ''));
 // console.log(semver.inc('1.0.0', 'patch', `beta-${+new Date}`)); // 1.0.1
 // console.log(semver.inc('1.0.0', 'minor', `beta-${+new Date}`)); // 1.1.0
 // console.log(semver.inc('1.0.0', 'major', `beta-${+new Date}`)); // 2.0.0
+
+console.log(semver.intersects('3.2.37', ''));
