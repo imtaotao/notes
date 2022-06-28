@@ -37,3 +37,5 @@ console.log(semver.intersects('17.0.2', ''));
 // console.log(semver.inc('1.0.0', 'major', `beta-${+new Date}`)); // 2.0.0
 
 console.log(semver.intersects('3.2.37', ''));
+
+console.log(semver.intersects('3.2.37-beta.1', '~3.2.37-beta.0'));
