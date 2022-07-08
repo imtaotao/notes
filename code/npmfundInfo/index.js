@@ -15,7 +15,7 @@ const { parse, evaluate } = require('@rustle/html-parse');
 
   try {
     const manifest = await pacote.manifest('@types/react@*')
-    console.log(manifest._resolved);
+    console.log(manifest);
     // const dest = path.resolve(__dirname, `./modules/@types/react@*`);
     // const res = await pacote.extract(manifest.dist.tarball, dest);
     // console.log(res);
