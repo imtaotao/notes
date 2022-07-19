@@ -5,8 +5,17 @@
   <title>Dev</title>
 </head>
 <body>
-<script>
-  console.log(1);
+<script type="module">
+  import { parse } from './code/jsParser/index.js';
+  
+  parse(`
+    class a {
+      get a () {}
+      b() {}
+      static c() {}
+    }
+    var aa = 2;
+  `)
 </script>
 </body>
 </html>
