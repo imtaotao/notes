@@ -4,10 +4,14 @@
   <title>rollup build test</title>
 </head>
 <body>
-<!-- <script src="./dist/test.umd.js"></script> -->
-<script type="module">
-  import semver from './dist/test.esm-bundler.js';
-
+<script>
+  window.Buffer = {}
+  window.process = {
+    env: {}
+  }
+</script>
+<script src="./dist/test.umd.js"></script>
+<script>
   const updateVersion = (val) => {
     const version = semver.valid(val);
     if (!version) {

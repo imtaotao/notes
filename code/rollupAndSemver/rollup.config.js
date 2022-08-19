@@ -1,6 +1,7 @@
 import path from 'path';
 import json from '@rollup/plugin-json';
 import cleanup from 'rollup-plugin-cleanup';
+import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
@@ -34,7 +35,7 @@ function createConfig(format, output) {
   
   if (format !== 'cjs') {
     nodePlugins = [
-      nodeResolve({ browser: isUmdBuild }),
+      nodeResolve({ browser: isUmdBuild, preferBuiltins: true }),
       commonjs({ sourceMap: false }),
     ];
   }
@@ -51,6 +52,13 @@ function createConfig(format, output) {
         clean: true, // no cache
         typescript: require('typescript'),
         tsconfig: path.resolve(__dirname, './tsconfig.json'),
+      }),
+      replace({
+        "process": "null",
+        "process.env": "null",
+        "process.platform": "null",
+        "process.env.BABEL_TYPES_8_BREAKING": "null",
+        "Buffer.isBuffer": "(() => {})"
       }),
       ...nodePlugins,
     ],
