@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>rollup build test</title>
+</head>
+<body>
+<script>
+  window.Buffer = {}
+  window.process = {
+    env: {}
+  }
+</script>
+<script src="./dist/test.umd.js"></script>
+<script>
+  const updateVersion = (val) => {
+    const version = semver.valid(val);
+    if (!version) {
+      throw new Error(`无效的版本号: ${version}`);
+    }
+    const opts = semver.parse(version);
+    return opts.prerelease.length > 0
+      ? semver.inc(version, 'prerelease', opts.prerelease[0])
+      : semver.inc(version, 'patch');
+  }
+
+  let version = '2.0.1-beta';
+  setInterval(() => {
+    version = updateVersion(version);
+    console.log(version);
+  }, 1000);
+</script>
+</body>
+</html>
