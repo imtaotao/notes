@@ -21,6 +21,6 @@ const cmdShim2 = require('@zkochan/cmd-shim');
     fs.mkdirSync(binDest, { recursive: true });
   }
 
-  // await cmdShim2.ifExists(src, `${binDest}/${binName}`, { createPwshFile: false });
-  await cmdShim1.ifExists(src, `${binDest}/${binName}`, { createPwshFile: false });
+  await cmdShim2.ifExists(src, `${binDest}/${binName}`, { createPwshFile: false, createCmdFile: true });
+  // await cmdShim1.ifExists(src, `${binDest}/${binName}`, { createPwshFile: false });
 })();
