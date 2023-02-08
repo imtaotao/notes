@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css scope</title>
+</head>
+<body>
+<div id="root">
+  <div class="test-div">button</div>
+</div>
+<script type="module">
+  import { CssCompiler } from './index.js';
+
+  // 测试多次，得出平均值和中位数
+  async function performanceTesting(code, times) {
+    const record = [];
+    const parse = () => {
+      const start = performance.now();
+      const compiler = new CssCompiler('#root ', code)
+      const css = compiler.process();
+      return performance.now() - start;
+    }
+    
+    for (let i = 0; i < times; i++) {
+      record.push(parse());
+    }
+    let sum = 0;
+    sum = record.reduce((pre, cur) => pre + cur);
+    console.log(record.map(v => v.toFixed(0)));
+    console.log('平均值: ', sum / record.length);
+  }
+
+  // fetch code
+  fetch('./test.css').then(res => res.text()).then(async code => {
+    code = code.repeat(1500);
+    const groups = 10;
+    const size = (new Blob([code]).size / 1024 / 1024).toFixed(2)
+
+    // 感觉后续的测试被浏览器优化了，变快很多。。。
+    console.log(`start performance testing(${size}M)...`);
+    for (let i = 0; i < groups; i++) {
+      console.log(`第${i + 1}组测试...`)
+      await performanceTesting(code, 10);
+      console.log('\n');
+    }
+
+    setTimeout(() => {
+      const compiler = new CssCompiler('#root ', code)
+      const css = compiler.process();
+      // 添加样式
+      const style = document.createElement('style')
+      style.innerHTML = css;
+      document.head.appendChild(style)
+    }, 200)
+  })
+</script>
+</body>
+</html>
