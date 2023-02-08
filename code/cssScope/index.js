@@ -13,7 +13,6 @@ RuleType.keyframes = 7;
 RuleType.keyframe = 8;
 RuleType.namespace = 10;
 RuleType.counterStyle = 11;
-RuleType.supports = 12;
 RuleType.document = 13;
 RuleType.fontFeatureValues =  14;
 RuleType.viewport = 15;
