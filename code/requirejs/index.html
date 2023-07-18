@@ -22,27 +22,32 @@
           reqUtils(['react', 'react-dom'], (react, reactDOM) => {
             const req = require.config({
               context: appName,
-              paths: {
-                aModule: 'a',
-                bModule: 'b',
-              }
             })
             define('react', () => react);
             define('react-dom', () => reactDOM);
-            define('globalEnv', () => env);
-            req(['bModule'], resolve);
+            define('globalEnv', () => ({
+              ...env,
+              setModule(key, val) {
+                const context = requirejs.s.contexts[appName];
+                context.defined[key] = val;
+              },
+            }));
+            req(['b'], resolve);
           })
         })
       }
       
     
-      const m1 = await createAppModule('p1', { n: 1, name: 'arthur' })
+      const p1 = createAppModule('p1', { n: 1, name: 'arthur' })
+      const p2 = createAppModule('p2', { n: 2, name: 'chentao' })
+
+      const m1 = await p1;
       console.log(m1, 'p1')
       window.m1 = m1;
 
       console.log('-------------')
 
-      const m2 = await createAppModule('p2', { n: 2, name: 'chentao' })
+      const m2 = await p2
       console.log(m2, 'p2')
       window.m2 = m2;
     })()

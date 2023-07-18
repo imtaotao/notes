@@ -1,7 +1,16 @@
-define('bModule', ['aModule', 'globalEnv'], (a, env) => {
-  console.log('b.js', a, env)
+define('b', ['require',  'a', 'globalEnv'], (req, a, env) => {
+  setTimeout(() => {
+    // define('test', [], () => `test module ${env.n}`);
+    env.setModule('test', `test module ${env.n}`);
+    setTimeout(() => {
+      req(['c'], (m) => {
+        console.log('c', m)
+      })
+    }, 1000)
+  })
+
   return {
     name: env.name,
-    age: env.n + '2',
+    age:  `2${env.n}`
   };
 });

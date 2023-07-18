@@ -1,8 +1,7 @@
-define('aModule', ['globalEnv', 'react'], (env, react) => {
-  console.log('a.js', env)
+define('a', ['globalEnv', 'react'], (env, react) => {
   console.log(react.tt, env.tt)
+  env.tt = 123;
   react.tt = 123;
-  env.tt = 456;
   return {
     data: 'this is a module'
   };
