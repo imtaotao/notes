@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <script src="./require.js"></script>
+  <script>
+    ;(async () => {
+      window.reqUtils = require.config({
+        context: 'utils',
+        paths: {
+          'react': 'https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.development',
+          'react-dom': 'https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.development',
+        }
+      })
+
+      // 在 webRuntime 中，要复用 context 必须满足以下情况
+      // 应用的 url 必须是一样的，鉴权参数一样
+      window.createAppModule = (appName, env) => {
+        return new Promise(resolve => {
+          reqUtils(['react', 'react-dom'], (react, reactDOM) => {
+            const req = require.config({
+              context: appName,
+              paths: {
+                aModule: 'a',
+                bModule: 'b',
+              }
+            })
+            define('react', () => react);
+            define('react-dom', () => reactDOM);
+            define('globalEnv', () => env);
+            req(['bModule'], resolve);
+          })
+        })
+      }
+      
+    
+      const m1 = await createAppModule('p1', { n: 1, name: 'arthur' })
+      console.log(m1, 'p1')
+      window.m1 = m1;
+
+      console.log('-------------')
+
+      const m2 = await createAppModule('p2', { n: 2, name: 'chentao' })
+      console.log(m2, 'p2')
+      window.m2 = m2;
+    })()
+  </script>
+</body>
+</html>
