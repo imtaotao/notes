@@ -18,6 +18,9 @@ module.exports = {
         template: './index.html',
       },
     ],
+    define: {
+      SC_DISABLE_SPEEDY: true,
+    },
   },
   module: {
     rules: [
