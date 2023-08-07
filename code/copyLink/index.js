@@ -7,6 +7,4 @@ const dest2 = path.resolve(__dirname, './demo2');
 
 // fs.symlinkSync(src, dest);
 console.log(fs.existsSync(dest));
-fs.copySync(dest, dest2, {
-  
-});
+fs.copySync(dest, dest2, {});

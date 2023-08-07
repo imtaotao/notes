@@ -1,4 +1,4 @@
-const http = require('http')
+const http = require('http');
 const HTTP_PORT_RE = /:80$/;
 const HTTPS_PORT_RE = /:443$/;
 
@@ -56,7 +56,8 @@ module.exports = function (req, res, host, port) {
   options.host = host || '127.0.0.1';
 
   const client = http.request(options, (publicRes) => {
-    const origin = !publicRes.headers['access-control-allow-origin'] && req.headers.origin;
+    const origin =
+      !publicRes.headers['access-control-allow-origin'] && req.headers.origin;
     if (origin) {
       publicRes.headers['access-control-allow-origin'] = origin;
       publicRes.headers['access-control-allow-credentials'] = true;
@@ -71,7 +72,7 @@ module.exports = function (req, res, host, port) {
       destroyed = true;
       client.destroy();
     }
-  }
+  };
   req.on('error', abort);
   res.on('error', abort);
   res.once('close', abort);
@@ -81,4 +82,4 @@ module.exports = function (req, res, host, port) {
   });
   req.pipe(client);
   return client;
-}
+};

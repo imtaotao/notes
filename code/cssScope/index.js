@@ -3,7 +3,7 @@ const RuleType = Object.create(null);
 // 会被重写的规则
 RuleType.style = 1;
 RuleType.media = 4;
-RuleType.supports = 12
+RuleType.supports = 12;
 // 不会被重写，但是列出来
 RuleType.charset = 2;
 RuleType.import = 3;
@@ -14,7 +14,7 @@ RuleType.keyframe = 8;
 RuleType.namespace = 10;
 RuleType.counterStyle = 11;
 RuleType.document = 13;
-RuleType.fontFeatureValues =  14;
+RuleType.fontFeatureValues = 14;
 RuleType.viewport = 15;
 RuleType.regionStyle = 16;
 
@@ -32,7 +32,7 @@ export class CssCompiler {
     this.prefix = prefix;
     this.cssCode = cssCode;
   }
- 
+
   process() {
     if (!this.prefix) {
       return this.cssCode || '';
@@ -71,7 +71,7 @@ export class CssCompiler {
     const ruleText = cssText.slice(selectorText.length);
     const selectors = selectorText.split(',');
     let newSelectorText = '';
-    
+
     for (let i = 0, l = selectors.length; i < l; i++) {
       let s = selectors[i].trim();
       // 处理 Garfish 的场景
@@ -79,10 +79,10 @@ export class CssCompiler {
         s === 'html' || s === ':root'
           ? `[${__MockHtml__}]`
           : s === 'body'
-            ? `[${__MockBody__}]`
-            : s === 'head'
-              ? `[${__MockHead__}]`
-              : s;
+          ? `[${__MockBody__}]`
+          : s === 'head'
+          ? `[${__MockHead__}]`
+          : s;
       s = `${this.prefix}${s}`;
       if (i !== l - 1) {
         s += ', ';

@@ -13,13 +13,15 @@ console.log(Buffer.isBuffer);
 
 export default semver;
 
-
-const ast = parse(`
+const ast = parse(
+  `
   import a from './x.js';
   console.log(1)
-`, {
-  sourceType: 'module'
-})
+`,
+  {
+    sourceType: 'module',
+  },
+);
 
 console.log(ast);
 console.log(generate.default(ast));

@@ -1,4 +1,4 @@
-const npa = require("npm-package-arg");
+const npa = require('npm-package-arg');
 
-parsed = npa("@bar/foo@workspace:*");
+parsed = npa('@bar/foo@workspace:*');
 console.log(parsed);

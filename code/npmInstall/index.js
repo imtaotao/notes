@@ -12,7 +12,6 @@ const Arborist = require('@npmcli/arborist');
 //   console.log(res.edgesOut);
 // })
 
-
 const options = {
   prune: false,
   save: false,
@@ -22,9 +21,9 @@ const options = {
   version: '1.7.1',
   cacheDir: 'node_modules/.wowpack',
   path: __dirname,
-  add: [ 'garfish@1.7.1' ]
-}
+  add: ['garfish@1.7.1'],
+};
 const arb = new Arborist(options);
-arb.reify(options).then(res => {
+arb.reify(options).then((res) => {
   console.log(res.edgesOut);
-})
+});

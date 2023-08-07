@@ -9,7 +9,7 @@ function start() {
 
   walk.walkSync(rootDir, {
     listeners: {
-      file(root, {name}, next) {
+      file(root, { name }, next) {
         if (path.extname(name) === '.css') {
           data.push(`${root.replace(prefix, '')}/${name}`);
         }
@@ -17,13 +17,13 @@ function start() {
       },
       errors(root, nodeStatsArray, next) {
         hasError = true;
-        nodeStatsArray.forEach(({error}) => {
+        nodeStatsArray.forEach(({ error }) => {
           console.log(error);
-        })
-        next()
+        });
+        next();
       },
     },
-  })
+  });
   return hasError || data;
 }
 

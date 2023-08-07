@@ -7,4 +7,4 @@ init(async (exec, connection) => {
   await exec('use world;');
   const res = await exec('select char_length("chentao")');
   console.log(res);
-})
+});

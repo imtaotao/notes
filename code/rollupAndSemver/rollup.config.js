@@ -28,11 +28,11 @@ const packageConfigs = Object.keys(outputConfigs).map((format) =>
 function createConfig(format, output) {
   let nodePlugins = [];
   const isUmdBuild = /umd/.test(format);
-  const input = path.resolve(__dirname, 'src/index.ts')
+  const input = path.resolve(__dirname, 'src/index.ts');
 
   output.externalLiveBindings = false;
   if (isUmdBuild) output.name = 'semver';
-  
+
   if (format !== 'cjs') {
     nodePlugins = [
       nodeResolve({ browser: isUmdBuild, preferBuiltins: true }),
@@ -54,11 +54,11 @@ function createConfig(format, output) {
         tsconfig: path.resolve(__dirname, './tsconfig.json'),
       }),
       replace({
-        "process": "null",
-        "process.env": "null",
-        "process.platform": "null",
-        "process.env.BABEL_TYPES_8_BREAKING": "null",
-        "Buffer.isBuffer": "(() => {})"
+        process: 'null',
+        'process.env': 'null',
+        'process.platform': 'null',
+        'process.env.BABEL_TYPES_8_BREAKING': 'null',
+        'Buffer.isBuffer': '(() => {})',
       }),
       ...nodePlugins,
     ],

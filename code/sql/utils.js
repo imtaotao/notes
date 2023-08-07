@@ -5,19 +5,19 @@ const mysql = require('mysql2');
 
 const parseSql = (sql) => {
   const lines = sql.split('\n');
-  return lines.map(v => ` ${v.trim()}`).join('');
-}
+  return lines.map((v) => ` ${v.trim()}`).join('');
+};
 
-module.exports = function(cb) {
+module.exports = function (cb) {
   const connection = mysql.createConnection({
     user: 'root',
     host: 'localhost',
-    database : 'test',
-    password : 'chentao1994',
+    database: 'test',
+    password: 'chentao1994',
   });
 
   const exec = (sql) => {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       sql = parseSql(sql.trim());
       connection.query(sql, (error, results, fields) => {
         if (error) {
@@ -25,9 +25,9 @@ module.exports = function(cb) {
           throw error;
         }
         resolve(results);
-      })
-    })
-  }
+      });
+    });
+  };
   connection.connect();
   cb(exec, connection);
-}
+};

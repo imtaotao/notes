@@ -1,0 +1,6 @@
+{
+  "name": "styled-components-demo",
+  "scripts": {
+    "dev": "NODE_ENV=development npx rspack serve"
+  }
+}

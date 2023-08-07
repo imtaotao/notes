@@ -8,5 +8,5 @@ const Arborist = require('@npmcli/arborist');
 
   console.log(Object.keys(data));
   console.log(data.children);
-  debugger
+  debugger;
 })();

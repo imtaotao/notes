@@ -28,28 +28,30 @@ function read(db, storeName, keyPath) {
     const request = objectStore.get(keyPath); // 根据主键获取
     request.onsuccess = () => {
       resolve(request.result);
-    }
+    };
     request.onerror = (e) => reject(e);
-  })
+  });
 }
 
 // 插入一条数据
 function add(db, storeName, value) {
   return new Promise((resolve, reject) => {
-    const request = db.transaction([storeName], 'readwrite')
+    const request = db
+      .transaction([storeName], 'readwrite')
       .objectStore(storeName)
       .add(value);
     request.onsuccess = () => resolve();
     request.onerror = (e) => reject(e.target.error);
-  })
+  });
 }
 
 function update(db, storeName, value) {
   return new Promise((resolve, reject) => {
-    const request = db.transaction([storeName], 'readwrite')
+    const request = db
+      .transaction([storeName], 'readwrite')
       .objectStore(storeName)
       .put(value);
     request.onsuccess = () => resolve();
     request.onerror = (e) => reject(e.target.error);
-  })
+  });
 }
