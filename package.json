@@ -47,10 +47,16 @@
     "stylis-plugin-extra-scope": "^0.3.0",
     "typescript": "^4",
     "validate-npm-package-name": "^4.0.0",
-    "walk": "^2.3.15"
+    "walk": "^2.3.15",
+    "antd": "^5.8.4"
   },
   "devDependencies": {
     "prettier": "^2.4.1",
-    "prettier-eslint-cli": "^5.0.1"
+    "prettier-eslint-cli": "^5.0.1",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-sources": "^3.2.2",
+    "html-webpack-plugin": "^5.5.0",
+    "terser-webpack-plugin": "5.3.6"
   }
 }
