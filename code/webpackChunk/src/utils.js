@@ -1,7 +1,7 @@
 export function getEnv() {
   try {
     return require('global-env');
-  } catch(e) {
+  } catch (e) {
     return null;
   }
 }
