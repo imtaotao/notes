@@ -80,10 +80,10 @@ module.exports = {
       });
     },
 
-    function RuntimeChange(compiler) {
-      compiler.hooks.compilation.tap('RuntimeChange', (compilation) => {
-        compilation.hooks.finishModules.tap('RuntimeChange', () => {
-          compilation.hooks.additionalAssets.tap('RuntimeChange', () => {
+    function Runtime(compiler) {
+      compiler.hooks.compilation.tap('Runtime', (compilation) => {
+        compilation.hooks.finishModules.tap('Runtime', () => {
+          compilation.hooks.additionalAssets.tap('Runtime', () => {
             for (const entry of compilation.entrypoints.values()) {
               const chunk = entry.getRuntimeChunk();
               const dir = `${chunk.name}.js`;

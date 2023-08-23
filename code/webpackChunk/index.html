@@ -42,10 +42,12 @@
     const getScope = (el) => {
       const { tagName, src } = el || {};
       if (src && tagName.toLowerCase() === 'script') {
-          return el.getAttribute('data-requirecontext') ||
-          el.getAttribute('data-scope');
+        return (
+          el.getAttribute('data-requirecontext') ||
+          el.getAttribute('data-scope')
+        );
       }
-      return ''
+      return '';
     };
     window.Element.prototype.appendChild = function () {
       const parentNode = this;
@@ -98,7 +100,7 @@
     });
   }
 
-  createApp('app1', { data: 'data-app1' }).then(async (require) => {
+  createApp('app1', { data: 'data-app1' }).then((require) => {
     require(files, (...ms) => {
       const m = ms.find(Boolean);
       window.test1 = m;
@@ -106,7 +108,7 @@
     });
   });
 
-  createApp('app2', { data: 'data-app2' }).then(async (require) => {
+  createApp('app2', { data: 'data-app2' }).then((require) => {
     require(files, (...ms) => {
       const m = ms.find(Boolean);
       window.test2 = m;
