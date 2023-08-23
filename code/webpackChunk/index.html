@@ -21,7 +21,7 @@
   const CHUNK_REG_PROD = /self\.(webpackChunkChentao)/g;
   const CHUNK_REG_DEV = /self\[['"](webpackChunkChentao)['"]\]/g;
   const SCOPE_REG =
-    /\.setAttribute\(['"]data-scope['"],\s*\/\*\!scope-placeholder\*\/\s*['"]runtime['"]\)/;
+    /\.setAttribute\(['"]data-scope['"],\s*['"']scope-placeholder['"]\)/;
 
   async function fetchAndEvalScript(url, scope, isRuntime) {
     let __code__ = await fetch(url).then((res) => res.text());
@@ -37,24 +37,21 @@
     eval(`${__code__}\n//# sourceURL=${url}(${scope})`);
   }
 
-  function interceptCodeExecution(files) {
+  function interceptCodeExecution() {
     const originAppendChild = window.Element.prototype.appendChild;
-    const isTargetFile = (el) => {
+    const getScope = (el) => {
       const { tagName, src } = el || {};
       if (src && tagName.toLowerCase() === 'script') {
-        for (const file of files) {
-          if (src.includes(file)) return true;
-        }
+          return el.getAttribute('data-requirecontext') ||
+          el.getAttribute('data-scope');
       }
-      return false;
+      return ''
     };
     window.Element.prototype.appendChild = function () {
       const parentNode = this;
       const el = arguments[0];
-      if (parentNode && isTargetFile(el)) {
-        const scope =
-          el.getAttribute('data-requirecontext') ||
-          el.getAttribute('data-scope');
+      const scope = getScope(el);
+      if (parentNode && scope) {
         fetchAndEvalScript(el.src, scope).then(() => {
           el.dispatchEvent(new Event('load'));
         });
@@ -68,7 +65,7 @@
   const files = await fetch('./dist/manifest.json')
     .then((res) => res.json())
     .then((fs) => {
-      interceptCodeExecution(fs);
+      interceptCodeExecution();
       const files = [];
       fs.forEach((f) => {
         // production 和 development

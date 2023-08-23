@@ -39,7 +39,7 @@ module.exports = {
     },
   },
   optimization: {
-    minimize: false,
+    minimize: true,
     minimizer: [new TerserPlugin({ extractComments: false })],
     realContentHash: true,
     runtimeChunk: {
@@ -94,7 +94,7 @@ module.exports = {
                     .replace(
                       /.+script\.setAttribute\(['"]data-webpack['"],\s+.+\+.+\);?/,
                       (k1) =>
-                        `${k1}script.setAttribute("data-scope", /*!scope-placeholder*/"runtime")`,
+                        `${k1}script.setAttribute("data-scope", "scope-placeholder");`,
                     );
                   return new RawSource(newCode);
                 });
