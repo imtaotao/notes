@@ -1,0 +1,7 @@
+{
+  "name": "webpack-chunk-demo",
+  "scripts": {
+    "build": "rm -rf ./dist && npx webpack",
+    "dev": "http-server ./ -p 1024 --cors -c-1"
+  }
+}

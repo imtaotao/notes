@@ -8,7 +8,7 @@ module.exports = {
   mode: 'production',
   entry: './src/index.js',
   output: {
-    trustedTypes: true,
+    // trustedTypes: true,
     uniqueName: 'Chentao',
     path: path.resolve(__dirname, 'dist'),
     publicPath: 'http://localhost:1024/dist/',
