@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>webpack demo</title>
+  <script src="https://unpkg.com/requirejs@2.3.6/require.js"></script>
+  <script>
+    window.reqUtils = require.config({
+      context: 'utils',
+      paths: {
+        'react': 'https://unpkg.com/react@18.2.0/umd/react.development',
+        'react-dom': 'https://unpkg.com/react-dom@18.2.0/umd/react-dom.development',
+      }
+    })
+  </script>
+</head>
+<body>
+<script>
+(async () => {
+  const CHUNK_REG_PROD = /self\.(webpackChunkChentao)/g;
+  const CHUNK_REG_DEV = /self\[['"](webpackChunkChentao)['"]\]/g;
+  const SCOPE_REG =
+    /\.setAttribute\(['"]data-scope['"],\s*['"']scope-placeholder['"]\)/;
+
+  async function fetchAndEvalScript(url, scope, isRuntime) {
+    let __code__ = await fetch(url).then((res) => res.text());
+    __code__ = __code__
+      .replace(CHUNK_REG_DEV, (_, k2) => `self['${k2}_${scope}']`)
+      .replace(CHUNK_REG_PROD, (_, k2) => `self.${k2}_${scope}`);
+    if (isRuntime) {
+      __code__ = __code__.replace(
+        SCOPE_REG,
+        `.setAttribute("data-scope", "${scope}")`,
+      );
+    }
+    eval(`${__code__}\n//# sourceURL=${url}(${scope})`);
+  }
+
+  function interceptCodeExecution() {
+    const originAppendChild = window.Element.prototype.appendChild;
+    const getScope = (el) => {
+      const { tagName, src } = el || {};
+      if (src && tagName.toLowerCase() === 'script') {
+        return (
+          el.getAttribute('data-requirecontext') ||
+          el.getAttribute('data-scope')
+        );
+      }
+      return '';
+    };
+    window.Element.prototype.appendChild = function () {
+      const parentNode = this;
+      const el = arguments[0];
+      const scope = getScope(el);
+      if (parentNode && scope) {
+        fetchAndEvalScript(el.src, scope).then(() => {
+          el.dispatchEvent(new Event('load'));
+        });
+        return el;
+      }
+      return originAppendChild.apply(this, arguments);
+    };
+  }
+
+  let runtimeJs;
+  const files = await fetch('./dist/manifest.json')
+    .then((res) => res.json())
+    .then((fs) => {
+      interceptCodeExecution();
+      const files = [];
+      fs.forEach((f) => {
+        // production 和 development
+        if (f.includes('a-src_a_js.js') || f.includes('85.js')) return;
+        if (f.includes('runtime.main.js')) {
+          runtimeJs = `./dist/${f}`;
+          return;
+        }
+        files.push(`./dist/${f}`);
+      });
+      return files;
+    });
+
+  function createApp(appName, env) {
+    return new Promise((resolve) => {
+      reqUtils(['react', 'react-dom'], (react, reactDOM) => {
+        const req = require.config({ context: appName });
+        define('React', () => react);
+        define('ReactDOM', () => reactDOM);
+        define('GlobalEnv', () => ({
+          ...env,
+          setModule(key, val) {
+            requirejs.s.contexts[appName].defined[key] = val;
+          },
+        }));
+        fetchAndEvalScript(runtimeJs, appName, true).then(() => {
+          resolve(req);
+        });
+      });
+    });
+  }
+
+  createApp('app1', { data: 'data-app1' }).then((require) => {
+    require(files, (...ms) => {
+      const m = ms.find(Boolean);
+      window.test1 = m;
+      console.log(m);
+    });
+  });
+
+  createApp('app2', { data: 'data-app2' }).then((require) => {
+    require(files, (...ms) => {
+      const m = ms.find(Boolean);
+      window.test2 = m;
+      console.log(m);
+    });
+  });
+})();
+</script>
+</body>
+</html>

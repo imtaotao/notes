@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>requirejs plugin</title>
+</head>
+<body>
+  <script src="./require.js"></script>
+  <!-- 可以配合 webpack externals -->
+  <!-- https://webpack.docschina.org/configuration/externals/#string -->
+  <!-- webpack 打包出来的格式 `define([['a', 'b', 'c']], () => { ... })` -->
+  <script>
+    window.requirejs.config({
+      map: {
+        '*': {
+          data: 'plugin!a.data',
+          age: 'plugin!a.user.age',
+          name: 'plugin!a.user.name',
+        },
+      },
+    });
+
+    define('plugin', () => {
+      return {
+        load(id, req, onload) {
+          const ms = id.split('.');
+          req([ms[0]], (m) => {
+            let res = m;
+            for (let i = 1; i < ms.length; i++) {
+              res = res[ms[i]];
+            }
+            onload(res);
+          });
+        },
+      };
+    });
+
+    const originRequire = window.require;
+    window.require = window.requirejs = function () {
+      let [config, deps] = arguments;
+      if (Array.isArray(config)) {
+        deps = config;
+      }
+      for (let i = 0; i < deps.length; i++) {
+        if (Array.isArray(deps[i])) {
+          deps[i] = `plugin!${deps[i].join('.')}`;
+        }
+      }
+      return originRequire.apply(this, arguments);
+    };
+  </script>
+  <script>
+    require(['age'], (m) => console.log(m));
+    require(['name'], (m) => console.log(m));
+    require(['data'], (m) => console.log(m));
+    require([['a', 'data']], m => console.log(m));
+  </script>
+</body>
+</html>
