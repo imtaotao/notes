@@ -1,0 +1,11 @@
+{
+  "name": "webpack-require-demo",
+  "scripts": {
+    "start": "npx webpack --watch",
+    "build": "rm -rf ./dist && npx webpack",
+    "dev": "http-server ./ -p 1025 --cors -c-1"
+  },
+  "dependencies": {
+    "react": "*"
+  }
+}
