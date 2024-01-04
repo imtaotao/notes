@@ -16,6 +16,7 @@
 
 时间从现在往后算，其实可以看到随着时间推移，代码质量和设计是越来越成熟的（第一年有大量的小 demo 未在 github 上）
 
+- [hooks-plugin](https://github.com/imtaotao/hooks-plugin): 一个微内核模式的底层库
 - [fetch-npm-package](https://github.com/imtaotao/fetch-npm-package): 在浏览器中下载并解压 npm 包
 - [node-package-exports](https://github.com/imtaotao/node-package-exports) : nodejs 新的导出规范实现
 - [super-fast-md5](https://github.com/imtaotao/super-fast-md5) : 超快的 md5 实现
@@ -36,3 +37,7 @@
 - [input-range](https://github.com/imtaotao/input-range) : 滑动库，用于高度自定义样式，在编程猫时已经实战过
 - [matrix](https://github.com/imtaotao/matrix) : css 矩阵变化库，与 css 矩阵变换行为一致
 - [swop](https://github.com/imtaotao/Swop) : 用来与 native 端交换收敛数据的库
+
+## AI
+
+- [文章收集](./docs/ai/文章汇总.md)
