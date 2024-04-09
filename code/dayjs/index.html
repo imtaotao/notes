@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dayjs</title>
+  <script src="./customParseFormat.js"></script>
+  <script src="./dayjs.js"></script>
+</head>
+<body>
+<script>
+  dayjs.extend(customParseFormat);
+  console.log(dayjs('2023-12-16 12:01:37', 'YYYY-MM-DD', true).isValid());
+  console.log(dayjs('1971-01-01 12:01:37', 'YYYY-MM-DD HH:mm:ss', true).isValid());
+</script>
+</body>
+</html>
