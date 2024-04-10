@@ -25,8 +25,8 @@ export const App = () => {
                   <li className="flex items-center">
                     <svg
                       className="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
                       <circle cx="12" cy="12" r="11" />
                       <path
@@ -45,8 +45,8 @@ export const App = () => {
                   <li className="flex items-center">
                     <svg
                       className="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
                       <circle cx="12" cy="12" r="11" />
                       <path
@@ -64,8 +64,8 @@ export const App = () => {
                   <li className="flex items-center">
                     <svg
                       className="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
                       <circle cx="12" cy="12" r="11" />
                       <path
