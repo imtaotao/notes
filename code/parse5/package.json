@@ -1,0 +1,22 @@
+{
+  "name": "parse5",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "imtaotao",
+  "scripts": {
+    "build:r": " rollup --config ./rollup.config.mjs",
+    "build": "esbuild src/index.js --bundle --outfile=./src/dist/jsdom.js --format=esm --sourcemap"
+  },
+  "dependencies": {
+    "esbuild": "^0.23.0",
+    "jsdom": "^24.1.1",
+    "parse5": "^7.1.2",
+    "rollup": "^2.67.2",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.7",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-typescript2": "^0.36.0"
+  }
+}
