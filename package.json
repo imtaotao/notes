@@ -38,6 +38,7 @@
     "libnpmfund": "^3.0.1",
     "libnpmpack": "^4.0.3",
     "libnpmsearch": "^5.0.2",
+    "mustache": "^4.2.0",
     "mysql2": "^2.3.3",
     "node-fetch": "^2.6.6",
     "npm": "^8.6.0",
