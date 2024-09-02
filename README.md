@@ -16,15 +16,16 @@
 
 时间从现在往后算，其实可以看到随着时间推移，代码质量和设计是越来越成熟的（第一年有大量的小 demo 未在 github 上）
 
+- [danmu](https://github.com/imtaotao/danmu): 简单易用的弹幕库
+- [aidly](https://github.com/imtaotao/aidly): 一个实例的 js 工具库
 - [hooks-plugin](https://github.com/imtaotao/hooks-plugin): 一个微内核模式的底层库
 - [fetch-npm-package](https://github.com/imtaotao/fetch-npm-package): 在浏览器中下载并解压 npm 包
-- [node-package-exports](https://github.com/imtaotao/node-package-exports) : nodejs 新的导出规范实现
+- [conditional-export](https://github.com/imtaotao/conditional-export) : nodejs 新的导出规范实现
 - [super-fast-md5](https://github.com/imtaotao/super-fast-md5) : 超快的 md5 实现
 - [garfish](https://github.com/bytedance/garfish) : 字节跳动的微前端框架
 - [sakura](https://github.com/imtaotao/sakura) : 全新的一种组件开发方式（未完成）
 - [hearken-next](https://github.com/imtaotao/hearken-next) : hearken 最新版（未完成）
 - [oops](https://github.com/imtaotao/oops) : 类 react hooks 库
-- [danmuku](https://github.com/imtaotao/danmuku) : 简单易用的弹幕库
 - [mp-store](https://github.com/imtaotao/mp-store) : 小程序状态管理库，珍爱网实战能稳定跑大型项目
 - [liberty](https://github.com/imtaotao/liberty) : 浏览器 runtime 的 cjs，写这个库对模块系统有了较深入的了解
 - [wobbly](https://github.com/imtaotao/wobbly) : 简单的动画库，用来验证副作用隔离的设计模式
