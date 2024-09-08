@@ -9,3 +9,5 @@ test2/
 dist/
 .bin/
 target/
+*.pdb
+*.exe
