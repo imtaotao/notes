@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ImportMap</title>
+</head>
+<body>
+  <!-- <script type="importmap">
+    {
+      "imports": {
+        "@/": "./"
+      }
+    }
+  </script> -->
+  <script>
+    const el = document.createElement('script');
+    el.type = 'importmap';
+    el.textContent = `{
+      "imports": {
+        "@/": "./"
+      }
+    }`;
+    document.body.appendChild(el);
+  </script>
+  <script type="module">
+    import { add } from '@/a.js';
+    console.log(add(1, 2));
+  </script>
+</body>
+</html>
