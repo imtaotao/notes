@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "dev": "http-server ./ -o --cors -c-1",
+    "dev": "http-server ./code -o --cors -c-1",
     "format": "prettier --write --parser typescript \"code/**/*.(t|j)s?(x)\""
   },
   "repository": {
