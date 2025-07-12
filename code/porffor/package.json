@@ -1,0 +1,9 @@
+{
+  "name": "porffor-test",
+  "scripts": {
+    "js": "node ./index.js",
+    "wasm": "npx porf wasm ./index.js index.wasm",
+    "c": "npx porf c ./index.js c_out.c && clang ./c_out.c -o c_out.exe && c_out.exe",
+    "native": "npx porf native ./index.js n_out.exe --compiler=clang --cO=Ofast && n_out.exe"
+  }
+}

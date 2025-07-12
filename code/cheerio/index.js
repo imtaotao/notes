@@ -41,12 +41,16 @@ $.root()
   .find('*')
   .contents()
   .filter((i, ele) => {
-    return ele.type === 'comment' && ele.data.trimStart().startsWith('infux-slot');
+    return (
+      ele.type === 'comment' && ele.data.trimStart().startsWith('infux-slot')
+    );
   })
   .each((i, elem) => {
     const name = elem.data.match(/name="(.*?)"/)?.[1];
     console.log(elem.data, name);
-    const newDiv = $('<div>').text('This is a new div replacing a comment ' + name);
+    const newDiv = $('<div>').text(
+      'This is a new div replacing a comment ' + name,
+    );
     $(elem).replaceWith(newDiv);
   });
 const code = $.root().html();

@@ -11,3 +11,5 @@ dist/
 target/
 *.pdb
 *.exe
+*.c
+*.wasm
