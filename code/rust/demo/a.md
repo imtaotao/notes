@@ -1,1 +1,0 @@
-<img alt="Star History Chart" src="https://api.star-history.com/svg?repos=imtaotao/danmu&type=Date" />

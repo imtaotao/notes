@@ -24,11 +24,13 @@
   "packageManager": "pnpm@9.1.3",
   "dependencies": {
     "@douyinfe/semi-ui": "^2.16.1",
+    "@ts-morph/bootstrap": "^0.28.0",
     "@rspack/cli": "^0.2.1",
     "@swc/core": "^1.2.218",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@zkochan/cmd-shim": "^5.3.1",
+    "ts-morph": "^27.0.0",
     "http-server": "^14.1.1",
     "porffor": "^0.58.18",
     "aidly": "^1.22.0",
@@ -54,8 +56,9 @@
     "semver": "^7.3.5",
     "styled-components": "^5.3.11",
     "stylis-plugin-extra-scope": "^0.3.0",
-    "typescript": "^4",
+    "typescript": "^5.9.2",
     "validate-npm-package-name": "^4.0.0",
+    "tsx": "^4.20.5",
     "walk": "^2.3.15"
   },
   "devDependencies": {

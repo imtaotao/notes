@@ -1,45 +1,80 @@
-// use std::env;
-// use std::path::Path;
-// use std::process::Command;
+use std::collections::HashMap;
 
-// fn main() {
-//   let args: Vec<String> = env::args().collect();
-//   if args.len() < 2 {
-//     println!("Please provide a demo name.");
-//     return;
-//   }
-//   let demo_name = &args[1];
-//   let demo_path = format!("./src/{}.rs", demo_name);
-//   let output_path = format!("./src/{}.exe", demo_name);
-
-//   if Path::new(&demo_path).exists() {
-//     // Compile the source file
-//     if Command::new("rustc")
-//       .args(&[&demo_path, "-o", &output_path])
-//       .status()
-//       .expect("Failed to compile")
-//       .success()
-//     {
-//       // Execute the compiled file
-//       if let Err(e) = Command::new(&output_path).status() {
-//         eprintln!("Failed to execute {}: {}", demo_name, e);
-//       }
-//     } else {
-//       eprintln!("Compilation failed for {}", demo_name);
-//     }
-//   } else {
-//     println!("Demo file {} does not exist.", demo_name);
-//   }
-// }
-
-fn main() {
-  let string1 = String::from("abcd");
-  let string2 = "xyz";
-
-  let result = longest(&string1, string2);
-  println!("The longest string is {}", result);
+#[derive(Debug)]
+pub enum NodeType {
+  Element(ElementData),
+  Text(String),
+}
+#[derive(Debug)]
+pub struct Node {
+  pub children: Vec<Node>,
+  pub node_type: NodeType,
 }
 
-fn longest<'a>(x: &str, y: &'a str) -> &'a str {
-  y
+#[derive(Debug)]
+pub struct ElementData {
+  pub tag_name: String,
+  pub attributes: Attrs,
+}
+
+type Attrs = HashMap<String, String>;
+
+// 创建节点
+impl Node {
+  pub fn text(data: String) -> Self {
+    Node {
+      children: vec![],
+      node_type: NodeType::Text(data),
+    }
+  }
+
+  pub fn elem(name: String, attrs: Attrs, children: Vec<Node>) -> Self {
+    let node_type = NodeType::Element(ElementData {
+      tag_name: name,
+      attributes: attrs,
+    });
+    Node {
+      children,
+      node_type,
+    }
+  }
+}
+
+pub struct Parser {
+  idx: usize,
+  input: String,
+}
+
+impl Parser {
+  pub fn new(input: String) -> Parser {
+    return Parser { idx: 0, input };
+  }
+
+  fn current_str(&self) -> &str {
+    return &self.input[self.idx..];
+  }
+
+  fn next_char(&self) -> Option<char> {
+    return self.current_str().chars().next();
+  }
+
+  fn starts_with(&self, s: &str) -> bool {
+    return self.current_str().starts_with(s);
+  }
+
+  fn eof(&self) -> bool {
+    return self.idx >= self.input.len();
+  }
+
+  fn consume_char(&self) {}
+
+  fn parse_nodes(&mut self) -> Vec<Element> {
+    let mut nodes = Vec::new();
+
+    return nodes;
+  }
+}
+
+fn main() {
+  println!(r#"Hello world"#);
 }

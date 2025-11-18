@@ -1,0 +1,2 @@
+- Format code: `cargo fmt`
+- rust-analyzer: `vscode-plugin` - `add folder to workspace`
