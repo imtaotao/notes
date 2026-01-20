@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 *.log
+.env
+.env.ai
 yarn.lock
 package-lock.json
 test/

@@ -42,7 +42,7 @@ async function getRequestHeadersViaSW() {
       window.location.origin,
       [channel.port2],
     );
-    
+
     // 超时处理
     setTimeout(() => {
       reject(new Error('获取请求头超时'));
@@ -50,6 +50,5 @@ async function getRequestHeadersViaSW() {
     }, 5000);
   });
 }
-
 
 getRequestHeadersViaSW();

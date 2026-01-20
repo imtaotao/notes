@@ -1,17 +1,17 @@
-import path from "node:path";
-import json from "@rollup/plugin-json";
-import cleanup from "rollup-plugin-cleanup";
-import replace from "@rollup/plugin-replace";
-import commonjs from "@rollup/plugin-commonjs";
-import { nodeResolve } from "@rollup/plugin-node-resolve";
-import pkg from "./package.json" with { type: "json" };
+import path from 'node:path';
+import json from '@rollup/plugin-json';
+import cleanup from 'rollup-plugin-cleanup';
+import replace from '@rollup/plugin-replace';
+import commonjs from '@rollup/plugin-commonjs';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import pkg from './package.json' assert { type: 'json' };
 
 const { dirname: __dirname } = import.meta;
 
 const outputConfigs = {
-  "umd": {
-    format: "umd",
-    file: path.resolve(__dirname, "./src/dist/jsdom.umd.js"),
+  umd: {
+    format: 'umd',
+    file: path.resolve(__dirname, './src/dist/jsdom.umd.js'),
   },
 };
 
@@ -22,12 +22,12 @@ const packageConfigs = Object.keys(outputConfigs).map((format) =>
 function createConfig(format, output) {
   let nodePlugins = [];
   const isUmdBuild = /umd/.test(format);
-  const input = path.resolve(__dirname, "./src/index.js");
+  const input = path.resolve(__dirname, './src/index.js');
 
   output.externalLiveBindings = true;
-  if (isUmdBuild) output.name = "jsdom";
+  if (isUmdBuild) output.name = 'jsdom';
 
-  if (format !== "cjs") {
+  if (format !== 'cjs') {
     nodePlugins = [
       nodeResolve({ browser: isUmdBuild }),
       commonjs({ sourceMap: false }),

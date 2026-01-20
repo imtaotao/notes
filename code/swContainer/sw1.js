@@ -1,18 +1,18 @@
 let latestHeaders = null;
 
-self.addEventListener('install', event => {
+self.addEventListener('install', (event) => {
   event.waitUntil(self.skipWaiting()); // 立即跳过等待，进入激活阶段
 });
 
-self.addEventListener('activate', event => {
+self.addEventListener('activate', (event) => {
   event.waitUntil(self.clients.claim()); // 立即让 SW 控制所有客户端
 });
 
 self.addEventListener('fetch', (event) => {
-  console.log(event.request.url)
+  console.log(event.request.url);
   if (event.request.url.includes('abc')) {
     latestHeaders = {};
-    console.log(event.request.headers)
+    console.log(event.request.headers);
     for (const [key, value] of event.request.headers.entries()) {
       latestHeaders[key] = value;
     }

@@ -1,14 +1,14 @@
-import { createProject } from "@ts-morph/bootstrap";
+import { createProject } from '@ts-morph/bootstrap';
 
 const project = await createProject(); // or createProjectSync
 
 // these are typed as ts.SourceFile
 const myClassFile = project.createSourceFile(
-  "MyClass.ts",
-  "export class MyClass { prop: string; }",
+  'MyClass.ts',
+  'export class MyClass { prop: string; }',
 );
 const mainFile = project.createSourceFile(
-  "main.ts",
+  'main.ts',
   "import { MyClass } from './MyClass'",
 );
 
@@ -17,7 +17,7 @@ const program = project.createProgram();
 
 // // ts.TypeChecker
 const typeChecker = program.getTypeChecker();
-console.log(project.getSourceFiles().map(s => s.fileName));
+console.log(project.getSourceFiles().map((s) => s.fileName));
 
 // // ts.LanguageService
 // const languageService = project.getLanguageService();
